@@ -11,7 +11,8 @@ import java.util.List;
 
 /* Created by Arjun Gautam */
 @RestController
-@CrossOrigin("http://192.168.10.69:3000")
+//@CrossOrigin("http://192.168.10.69:3000")
+@CrossOrigin("http://192.168.10.71:3000")
 public class UserController {
 
     @Autowired
@@ -37,7 +38,7 @@ public class UserController {
     User updateUser(@RequestBody User newUser, @PathVariable Long id) {
         return userRepository.findById(id)
                 .map(user -> {
-                    user.setUsername(newUser.getUsername());
+                    user.setEmail(newUser.getEmail());
                     user.setName(newUser.getName());
                     user.setLevel(newUser.getLevel());
                     return userRepository.save(user);
