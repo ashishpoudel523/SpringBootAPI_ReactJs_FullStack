@@ -12,7 +12,7 @@ public class User {
     @GeneratedValue
     private Long id;
     private String email;
-    private String name;
+    private String password;
     private String level;
 
     public Long getId() {
@@ -31,12 +31,12 @@ public class User {
         this.email = email;
     }
 
-    public String getName() {
-        return name;
+    public String getPassword() {
+        return password;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     public String getLevel() {

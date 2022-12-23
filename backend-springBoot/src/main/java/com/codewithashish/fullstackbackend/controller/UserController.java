@@ -11,13 +11,18 @@ import java.util.List;
 
 /* Created by Arjun Gautam */
 @RestController
-//@CrossOrigin("http://192.168.10.69:3000")
-@CrossOrigin("http://192.168.10.71:3000")
+@CrossOrigin("http://192.168.10.69:3000") //Anil ko ip address
+//@CrossOrigin("http://192.168.10.71:3000")  //Shubham ko ip address
 public class UserController {
 
     @Autowired
     private UserRepository userRepository;
 
+    @GetMapping("/first")
+	public String first() {
+		return "Welcome to 1st springboot app";
+	}
+    
     @PostMapping("/user")
     User newUser(@RequestBody User newUser) {
         return userRepository.save(newUser);
@@ -39,7 +44,7 @@ public class UserController {
         return userRepository.findById(id)
                 .map(user -> {
                     user.setEmail(newUser.getEmail());
-                    user.setName(newUser.getName());
+                    user.setPassword(newUser.getPassword());
                     user.setLevel(newUser.getLevel());
                     return userRepository.save(user);
                 }).orElseThrow(() -> new UserNotFoundException(id));
